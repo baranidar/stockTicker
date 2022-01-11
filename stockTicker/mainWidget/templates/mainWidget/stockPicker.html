@@ -1,0 +1,36 @@
+{% extends 'mainWidget/base.html' %}
+
+{% load static %}
+
+{% block title %}
+Stock Picker
+{% endblock %}
+
+{% block css %}
+<style></style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <h1>Stock Picker</h1>
+    <p> Pick your favorites</p>
+    <form action="/stockticker">
+        <label for="stockPicker">Pick your stocks</label>
+        <select class="form-select form-select-lg mb-3" multiple aria-label="multiple select example"
+                name="stockPicker">
+            {% for i in stockPicker %}
+            <option value="{{i}}">{{i}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <div class="d-grid gap-2">
+            <input class="btn btn-primary" type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script></script>
+{% endblock %}
