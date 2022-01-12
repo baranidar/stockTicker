@@ -11,5 +11,5 @@ celery -A stockTicker.celery worker -l info
  celery -A stockTicker beat -l INFO
 
 4) In terminal or 4ht window, start redis
-/Users/aditibaranidar/Downloads/redis-6.2.6
+/Users/<>/Downloads/redis-6.2.6. - folder where redis is installed
 redis-server
