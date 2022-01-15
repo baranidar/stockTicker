@@ -25,7 +25,7 @@ class StockConsumer(AsyncWebsocketConsumer):
         else:
             schedule, created = IntervalSchedule.objects.get_or_create(every=10, period=IntervalSchedule.SECONDS)
             task = PeriodicTask.objects.create(interval=schedule, name='every-10-seconds',
-                                               task="mainapp.tasks.update_stock", args=json.dumps([stockpicker]))
+                                               task="mainWidget.tasks.update_stock", args=json.dumps([stockpicker]))
 
     async def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
