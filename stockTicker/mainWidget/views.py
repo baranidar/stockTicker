@@ -4,7 +4,7 @@ from django.shortcuts import render
 from yahoo_fin.stock_info import *
 import time
 import queue
-
+from asgiref.sync import sync_to_async
 
 # Create your views here.
 def stockPicker(request):
@@ -13,8 +13,20 @@ def stockPicker(request):
     # print(stock_Picker)
     return render(request, 'mainWidget/stockPicker.html', {'stockPicker': stock_Picker})
 
+@sync_to_async
+def checkAuthenticated(request):
+    if not request.user.is_authenticated:
+        return False
+    else:
+        return True
 
-def stockTicker(request):
+async def stockTicker(request):
+    is_login = await checkAuthenticated(request)
+    if not is_login:
+        return HttpResponse("Login First")
+    stockpicker = request.GET.getlist('stockpicker')
+    stockshare=str(stockpicker)[1:-1]
+
     stockPicker = request.GET.getlist('stockPicker')
     print(stockPicker)
     data = {}
