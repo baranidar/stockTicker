@@ -95,8 +95,8 @@ python manage.py runserver
 celery -A stockTicker.celery worker -l info
 3) In a third window, start celery beat
 celery -A stockTicker beat -l INFO
-4) In terminal or 4ht window, start redis
-/Users/<>/Downloads/redis-6.2.6. - folder where redis is installed
+4) In terminal or 4th window, start redis
+cd .. - folder where redis is installed
 redis-server
 
 Instructions
